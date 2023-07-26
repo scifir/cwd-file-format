@@ -53,9 +53,9 @@ The prefixes created with CWD have the following properties:
 
 The bywords created with CWD have the following properties:
 
-- **name:** The term.
-- **description:** What the term means.
-- **plural:** The plural form of the term.
+- **name:** The byword.
+- **description:** What the byword means.
+- **plural:** The plural form of the byword.
 
 ### Tags for CWD words
 
