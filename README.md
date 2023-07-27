@@ -1,5 +1,5 @@
 # CWD file format
-**Version:** 1.0-beta
+**Version:** 1.0.0-beta
 
 **Created Words Document**, of acronym **CWD**, is an XML file format that allows to create files of new words. A new word is any new word created not included in the official dictionary of the language, but useful for some, or a big amount, of purposes. Also, CWD allows to create new bywords and new prefixes.
 
@@ -57,7 +57,18 @@ The bywords created with CWD have the following properties:
 - **description:** What the byword means.
 - **plural:** The plural form of the byword.
 
-### Tags for CWD words
+## XML elements
+
+The XML elements for cwd files are the following:
+
+| XML element | Use | Description
+| -------- | ---------| ----------------------------|
+| \<dictionary\> | Required, top level | Top-level element to create cwd words inside |
+| \<word\> | Optional, any number | Creates a new word |
+| \<prefix\> | Optional, any number | Creates a new prefix |
+| \<byword\> | Optional, any number | Creates a new byword |
+
+### \<word\>
 
 A word is created inside a cwd file as follows:
 
@@ -69,6 +80,46 @@ A word is created inside a cwd file as follows:
 ```
 
 The tags for each definition, in each language, have as name the acronym of that language as specified in the ISO of Languages called **ISO 639**. It’s used the two letter code **ISO 639-1**.
+
+### \<byword\>
+
+A byword is like a word, but it's composed of two or more different words, and has a special meaning compared to the meaning of the two words without the definition of the byword.
+
+An example of a byword is the following:
+
+```xml
+<byword name="rolics researcher">
+	<en name="rolics researcher" plural="rolics researchers">Synonym of rolic.</en>
+	<es name="investigador de rólica" plural="investigadores de rólica">Sinónimo de róltico.</es>
+</byword>
+```
+
+### \<prefix\>
+
+A prefix is used to give meaning to a word related to some central idea. It means that the word is related to that meaning in some manner.
+
+An example of a prefix is the following:
+
+```xml
+<prefix name="rol-">
+	<en name="rol-">The word it precedes is related to rolics.</en>
+	<es name="rol-">La palabra a la que precede está relacionada con la rólica.</es>
+</prefix>
+```
+
+### \<category\>
+
+A category is used to group words, bywords and prefixes. It's useful to have all related definitions grouped inside a central idea. Then, it can be used to display all the words, bywords and prefixes by category inside a document.
+
+An example of a category is the following:
+
+```xml
+<category name="rólica" canonical_name="rolica">
+...
+</category>
+```
+
+Inside \<category\> any number of xml elements \<word\>, \<byword\> and \<prefix\> can be added.
 
 ## History of CWD
 
