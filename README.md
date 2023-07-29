@@ -39,7 +39,7 @@ The words created with CWD have the following properties:
 - **etymology:** The words that form the word, if the word has an etymology.
 - **synonym:** If there’re, the words which are synonyms of this word.
 - **antonym:** If there’re, the words which are antonyms of this word.
-- **parent:** If there’s, a word that’s a parent of this word, and then this word pertains to an ontology of words.
+- **parent:** If there’s, a word that’s a parent of this word, and then this word pertains to an ontology of words and/or bywords.
 
 ### Properties of CWD prefixes
 
@@ -55,7 +55,11 @@ The bywords created with CWD have the following properties:
 
 - **name:** The byword.
 - **description:** What the byword means.
+- **singular:** The singular form of the byword.
 - **plural:** The plural form of the byword.
+- **synonym:** If there’re, the words and/or bywords which are synonyms of this byword.
+- **antonym:** If there’re, the words and/or bywords which are antonyms of this byword.
+- **parent:** If there’s, a byword that’s a parent of this word, and then this word pertains to an ontology of words and/or bywords.
 
 ## XML elements
 
@@ -67,6 +71,11 @@ The XML elements for cwd files are the following:
 | \<word\> | Optional, any number | Creates a new word |
 | \<prefix\> | Optional, any number | Creates a new prefix |
 | \<byword\> | Optional, any number | Creates a new byword |
+| \<category\> | Optional, any number | Creates a new category of words, prefixes and bywords |
+
+### \<dictionary\>
+
+A dictionary is the top level element of a cwd file.
 
 ### \<word\>
 
@@ -81,6 +90,19 @@ A word is created inside a cwd file as follows:
 
 The tags for each definition, in each language, have as name the acronym of that language as specified in the ISO of Languages called **ISO 639**. It’s used the two letter code **ISO 639-1**.
 
+The attributes of each word are the following:
+
+| Attribute | Required | Description
+| -------- | --------- | ----------------------------|
+| name | Required | The word |
+| type | Required | If the word is a sustantive, adjective, verb or adverb |
+| singular | Required | The word in singular form |
+| plural | Required | The word in plural form |
+| etymology | Required | The etymology of the word. Each word that forms this word is specified in this attribute. If there's no etymology, it has to be empty |
+| synonym | Optional | Every synonym of the word |
+| antonym | Optional | Every antonym of the word |
+| parent | Optional | The direct parent of this word, if this word is part of an ontology |
+
 ### \<byword\>
 
 A byword is like a word, but it's composed of two or more different words, and has a special meaning compared to the meaning of the two words without the definition of the byword.
@@ -90,9 +112,20 @@ An example of a byword is the following:
 ```xml
 <byword name="rolics researcher">
 	<en name="rolics researcher" plural="rolics researchers">Synonym of rolic.</en>
-	<es name="investigador de rólica" plural="investigadores de rólica">Sinónimo de róltico.</es>
+	<es name="investigador de rólica" plural="investigadores de rólica">Sinónimo de rólico.</es>
 </byword>
 ```
+
+The attributes of each byword are the following:
+
+| Attribute | Required | Description
+| -------- | --------- | ----------------------------|
+| name | Required | The byword |
+| singular | Required | The byword in singular form |
+| plural | Required | The byword in plural form |
+| synonym | Optional | Every synonym of the byword |
+| antonym | Optional | Every antonym of the byword |
+| parent | Optional | The direct parent of this byword, if this byword is part of an ontology |
 
 ### \<prefix\>
 
@@ -107,6 +140,13 @@ An example of a prefix is the following:
 </prefix>
 ```
 
+The attributes of each prefix are the following:
+
+| Attribute | Required | Description
+| -------- | --------- | ----------------------------|
+| name | Required | The prefix |
+| etymology | Optional | The etymology of the prefix |
+
 ### \<category\>
 
 A category is used to group words, bywords and prefixes. It's useful to have all related definitions grouped inside a central idea. Then, it can be used to display all the words, bywords and prefixes by category inside a document.
@@ -120,6 +160,13 @@ An example of a category is the following:
 ```
 
 Inside \<category\> any number of xml elements \<word\>, \<byword\> and \<prefix\> can be added.
+
+The attributes of each category are the following:
+
+| Attribute | Required | Description
+| -------- | --------- | ----------------------------|
+| name | Required | The name of the category |
+| canonical_name | Optional | The name, canonicalized, of the category |
 
 ## History of CWD
 
