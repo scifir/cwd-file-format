@@ -1,5 +1,7 @@
 # CWD file format
 **Version:** 1.0.0-beta
+**Author:** [Ismael Correa Castro](https://iarfen.github.io) (ORCID 0009-0007-3815-7053)
+**Last updated:** 2023-07-31
 
 **Created Words Document**, of acronym **CWD**, is an XML file format that allows to create files of new words. A new word is any new word created not included in the official dictionary of the language, but useful for some, or a big amount, of purposes. Also, CWD allows to create new bywords and new prefixes.
 
